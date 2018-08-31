@@ -1,0 +1,91 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>br.ufes</groupId>
+  <artifactId>Scap</artifactId>
+  <packaging>war</packaging>
+  
+<dependencies>
+  
+  <dependency>
+    <groupId>org.apache.wicket</groupId>
+    <artifactId>wicket-core</artifactId>
+    <version>8.0.0</version>
+</dependency>
+
+ <dependency>
+            <groupId>org.apache.wicket</groupId>
+            <artifactId>wicket-auth-roles</artifactId>
+            <version>7.7.0</version>
+</dependency>
+        
+<dependency>  
+    <groupId>org.wicketstuff</groupId>  
+    <artifactId>wicketstuff-javaee-inject</artifactId>  
+    <version>8.0.0</version>  
+</dependency>  
+
+<!-- https://mvnrepository.com/artifact/org.apache.wicket/wicket-cdi -->
+<dependency>
+    <groupId>org.apache.wicket</groupId>
+    <artifactId>wicket-cdi</artifactId>
+    <version>8.0.0</version>
+</dependency>
+
+<dependency> 
+        <groupId>javax.enterprise</groupId> 
+        <artifactId>cdi-api</artifactId> 
+        <version>1.0-SP4</version> 
+</dependency> 
+
+<dependency> 
+        <groupId>org.jboss.seam.conversation</groupId> 
+        <artifactId>seam-conversation-spi</artifactId> 
+        <version>3.0.0.Final</version> 
+</dependency> 
+
+<!-- https://mvnrepository.com/artifact/org.apache.wicket/wicket-extensions -->
+<dependency>
+    <groupId>org.apache.wicket</groupId>
+    <artifactId>wicket-extensions</artifactId>
+    <version>8.0.0</version>
+</dependency>
+
+<dependency>
+    <groupId>org.apache.wicket</groupId>
+    <artifactId>wicket-datetime</artifactId>
+    <version>8.0.0-M7</version>
+</dependency>
+
+</dependencies>
+ 
+  <build>
+    <sourceDirectory>src</sourceDirectory>
+    <resources>
+      <resource>
+        <directory>src</directory>
+        <excludes>
+          <exclude>**/*.java</exclude>
+        </excludes>
+      </resource>
+    </resources>
+    <plugins>
+      <plugin>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <version>3.5.1</version>
+        <configuration>
+          <source>1.8</source>
+          <target>1.8</target>
+        </configuration>
+      </plugin>
+      <plugin>
+        <artifactId>maven-war-plugin</artifactId>
+        <version>3.0.0</version>
+        <configuration>
+          <warSourceDirectory>WebContent</warSourceDirectory>
+        </configuration>
+      </plugin>
+    </plugins>
+    <finalName>Scap</finalName>
+  </build>
+  <version>Scap</version>
+</project>

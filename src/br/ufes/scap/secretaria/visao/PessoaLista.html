@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:wicket="http://wicket.apache.org">
+<wicket:head>
+<title>Usuario</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet"
+    href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script
+    src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script
+    src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<style>
+.feedbackPanelERROR{
+  color: red;
+  margin-top: 15px;
+}
+</style>
+</wicket:head>
+<body>
+
+<wicket:extend>
+
+       <div style="margin: 40px;">
+
+
+<div class="container" wicket:id="containerTable"
+			style="padding-top: 20px;">
+			<div wicket:id="noResult" id="vazio" class="alert alert-info"
+				role="alert">Nenhuma pessoa cadastrada com esses dados.</div>
+			<table id="tabela" class="table table-striped ">
+				<thead wicket:id="colunas">
+					<tr>
+						<th data-align="center">Nome</th>
+						<th data-align="center">Matrícula</th>
+						<th data-align="center">Email</th>
+						<th data-align="center">Telefone</th>
+						<th></th>
+					</tr>
+				</thead>
+				<tbody id="pessoas" wicket:id="pessoas">
+					<tr>
+						<td><span wicket:id="Nome"></span></td>
+						<td><span wicket:id="Matricula"></span></td>
+						<td><span wicket:id="Email"></span></td>
+						<td><span wicket:id="Telefone"></span></td>
+						<td class="text-right">
+							<div class="btn-group btn-group-sm">
+								<a href="#" class="btn btn-dark" wicket:id="Cadastrar">Cadastrar Parentesco</a>
+							</div>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+
+
+
+
+
+
+<span wicket:id="feedback">Message goes here</span>
+
+</div>
+</wicket:extend>
+
+
+</body>
+</html>

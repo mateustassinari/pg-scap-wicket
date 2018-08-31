@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:wicket="http://wicket.apache.org">
+<wicket:head>
+<title>Cadastro Usuario</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet"
+    href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script
+    src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script
+    src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</wicket:head>
+<body>
+
+        <wicket:extend>
+
+       <div style="margin: 40px;">
+
+<div class="container">
+
+<form class="form-horizontal" wicket:id="form">
+<fieldset>
+
+<!-- Form Name -->
+<legend>Insira os dados da Pessoa:</legend>
+
+<!-- Text input-->
+<div class="control-group">
+  <label class="control-label" for="textinput">Nome:</label>
+  <div class="controls">
+    <input wicket:id="nome" type="text" placeholder="seu nome" class="input-xlarge" required autofocus>
+    
+  </div>
+</div>
+
+<!-- Text input-->
+<div class="control-group">
+  <label class="control-label" for="textinput">Sobrenome:</label>
+  <div class="controls">
+    <input wicket:id="sobrenome" type="text" placeholder="seu sobrenome" class="input-xlarge" required>
+    
+  </div>
+</div>
+
+<!-- Text input-->
+<div class="control-group">
+  <label class="control-label" for="textinput">Email:</label>
+  <div class="controls">
+    <input wicket:id="email" type="text" placeholder="exemplo@exemplo.com" class="input-large" required>
+    
+  </div>
+</div>
+
+<!-- Text input-->
+<div class="control-group">
+  <label class="control-label" for="textinput">Matrícula:</label>
+  <div class="controls">
+    <input wicket:id="matricula" type="text" placeholder="00000000" class="input-medium" required>
+    
+  </div>
+</div>
+
+<!-- Text input-->
+<div class="control-group">
+  <label class="control-label" for="textinput">Telefone:</label>
+  <div class="controls">
+    <input wicket:id="telefone" type="text" placeholder="00000-0000" class="input-medium" required>
+    
+  </div>
+</div>
+
+<!-- Password input-->
+<div class="control-group">
+  <label class="control-label" for="passwordinput">Password:</label>
+  <div class="controls">
+    <input wicket:id="password" type="password" placeholder="000000" class="input-medium" required>
+    
+  </div>
+</div>
+
+<!-- Select Basic -->
+<div class="control-group">
+  <label class="control-label" for="selectbasic"></label>
+  <div class="controls">
+    <select wicket:id="tipoPessoa" class="input-medium" required>
+      <option>Professor</option>
+  	  <option>Secretario</option>
+    </select>
+  </div>
+</div>
+
+<!-- Button -->
+<div class="control-group">
+  <label class="control-label" for="singlebutton"></label>
+  <div class="controls">
+    <button type="submit" wicket:id="button" class="btn btn-primary">Salvar</button>
+  </div>
+</div>
+
+</fieldset>
+</form>
+
+
+</div>
+</div>
+</wicket:extend>
+
+
+
+
+
+
+</body>
+</html>

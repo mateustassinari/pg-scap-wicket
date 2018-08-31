@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:wicket="http://wicket.apache.org">
+<wicket:head>
+<title>Cadastro Mandato</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet"
+    href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script
+    src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script
+    src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<style>
+.feedbackPanelERROR{
+  color: red;
+  margin-top: 15px;
+}
+</style>
+</wicket:head>
+<body>
+
+        <wicket:extend>
+
+       <div style="margin: 40px;">
+
+<div class="container">
+
+<form class="form-horizontal" wicket:id="form">
+<fieldset>
+
+<!-- Form Name -->
+<legend>Insira os dados do Mandato:</legend>
+
+<!-- Text input-->
+<div class="control-group">
+  <label class="control-label" for="textinput">Matrícula:</label>
+  <div class="controls">
+    <input wicket:id="matriculaoutra" type="text" placeholder="00000000" class="input-medium" required>
+    
+  </div>
+</div>
+
+
+<!-- Text input-->
+<div class="control-group">
+  <label class="control-label" for="textinput">Início do Mandato:</label>
+  <div class="controls">
+    <input wicket:id="datainicio" type="text" placeholder="" class="input-medium" required>
+    
+  </div>
+</div>
+
+<!-- Text input-->
+<div class="control-group">
+  <label class="control-label" for="textinput">Fim do Mandato:</label>
+  <div class="controls">
+    <input wicket:id="datafim" type="text" placeholder="" class="input-medium" required>
+    
+  </div>
+</div>
+
+
+
+<!-- Button -->
+<div class="control-group">
+  <label class="control-label" for="singlebutton"></label>
+  <div class="controls">
+    <button type="submit" wicket:id="buttonMandato" class="btn btn-primary">Salvar</button>
+  </div>
+</div>
+
+</fieldset>
+</form>
+
+
+</div>
+<span wicket:id="feedback">Message goes here</span>
+</div>
+</wicket:extend>
+
+</body>
+</html>

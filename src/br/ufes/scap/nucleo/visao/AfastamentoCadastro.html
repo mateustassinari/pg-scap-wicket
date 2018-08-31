@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:wicket="http://wicket.apache.org">
+<wicket:head>
+<title>Cadastro Novo Afastamento</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet"
+    href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script
+    src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script
+    src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<style>
+.feedbackPanelERROR{
+  color: red;
+  margin-top: 15px;
+}
+</style>
+</wicket:head>
+<body>
+
+<wicket:extend>
+
+       <div style="margin: 40px;">
+
+
+<div class="container">
+
+<form class="form-horizontal" wicket:id="form">
+<fieldset>
+
+<!-- Form Name -->
+<legend>Entre com as informações do afastamento:</legend>
+<span wicket:id="feedback">Message goes here</span>
+<!-- Text input-->
+<div class="control-group" >
+  <label class="control-label" for="textinput">Nome Evento:</label>
+  <div class="controls">
+    <input wicket:id="nomeevento" type="text" placeholder="Nome Evento" class="input-large" required>
+    
+  </div>
+</div>
+
+<!-- Text input-->
+<div class="control-group">
+  <label class="control-label" for="textinput">Nome Cidade:</label>
+  <div class="controls">
+    <input wicket:id="nomecidade" type="text" placeholder="Nome Cidade" class="input-large" required>
+    
+  </div>
+</div>
+
+<!-- Text input-->
+<div class="control-group">
+  <label class="control-label" for="textinput">Início do Afastamento:</label>
+  <div class="controls">
+    <input wicket:id="datainicio_afast" type="text" placeholder="" class="input-medium" required>
+    
+  </div>
+</div>
+
+<!-- Text input-->
+<div class="control-group">
+  <label class="control-label" for="textinput">Fim do Afastamento:</label>
+  <div class="controls">
+    <input wicket:id="datafim_afast" type="text" placeholder="" class="input-medium" required>
+    
+  </div>
+</div>
+
+<!-- Text input-->
+<div class="control-group">
+  <label class="control-label" for="textinput">Início do Evento:</label>
+  <div class="controls">
+    <input wicket:id="datainicio_evento" type="text" placeholder="" class="input-medium" required>
+    
+  </div>
+</div>
+
+<!-- Text input-->
+<div class="control-group">
+  <label class="control-label" for="textinput">Fim do Evento:</label>
+  <div class="controls">
+    <input wicket:id="datafim_evento" type="text" placeholder="" class="input-medium" required>
+    
+  </div>
+</div>
+
+<!-- Select Basic -->
+<div class="control-group">
+  <label class="control-label" for="selectbasic">Tipo do Afastamento:</label>
+  <div class="controls">
+ 	<select wicket:id="tipoAfastamento" class="input-medium" required>
+         <option>Nacional</option>
+      	 <option>Internacional</option>
+    </select>
+  </div>
+</div>
+
+<!-- Select Basic -->
+<div class="control-group">
+  <label class="control-label" for="selectbasic">Ônus:</label>
+  <div class="controls">
+ <select wicket:id="tipoOnus" class="input-medium" required>
+         <option>Inexistente</option>
+      <option>Parcial</option>
+      <option>Total</option>
+    </select>
+  </div>
+</div>
+
+<div class="control-group" >
+  <label class="control-label" for="textarea">Descreva o motivo do afastamento se achar necessário:</label>
+  <div class="controls">
+  <textarea class="form-control" wicket:id="motivo_afast" placeholder="Motivo Afastamento" rows="3" cols="6" maxlength="200"></textarea>
+</div>
+</div>
+
+<!-- Button -->
+<div class="control-group">
+  <label class="control-label" for="singlebutton"></label>
+  <div class="controls">
+    <button type="submit" wicket:id="button" class="btn btn-primary">Salvar</button>
+  </div>
+</div>
+
+</fieldset>
+</form>
+</div>
+</div>
+</wicket:extend>
+
+
+
+
+
+
+</body>
+</html>
