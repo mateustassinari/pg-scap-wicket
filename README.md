@@ -86,6 +86,6 @@ To create a JTA datasource for Scap in WildFly, open the file $WILDFLY_HOME/stan
 
 2.Rode o Wildfly e abra localhost:8080/Scap
 
-* OBS: Necessario criar um secretario com tipoPessoa igual a 1 manualmente no mysql workbench para entrar no sistema.
+* OBS: Necessario criar um secretario com tipoPessoa igual a 2 manualmente no mysql workbench para entrar no sistema.
 * OBS2: Para o cadastro da primeira pessoa ira gerar um erro por causo do hibernate_sequence, então é só abrir o Scap novamente e fazer o cadastro normalmente.
 
