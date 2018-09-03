@@ -1,9 +1,9 @@
 # pg-scap-wicket
-Para rodar o projeto ira precisar de:
+Para rodar o projeto vamos precisar de:
 
 * Eclipse IDE
 * Wildfly
-* MySQL Community e Workbench 
+* MySQL Community 
 * MySQL Connector/J JDBC Driver
 * MySQL Workbench 
 
@@ -82,10 +82,5 @@ To create a JTA datasource for Scap in WildFly, open the file $WILDFLY_HOME/stan
 ```
 
 # Rodando o projeto
-1.Open the Servers view, right-click the WildFly server and choose Add and Remove.... Move the Scap project from the Available list to the Configured list and click Finish;
-
+1. Abra a visão Servers, um clique com botão direito no wildfly e clique em Add and Remove, escolha o projeto Scap e finalize;
 2.Rode o Wildfly e abra localhost:8080/Scap
-
-* OBS: Necessario criar um secretario com tipoPessoa igual a 2 manualmente no mysql workbench para entrar no sistema.
-* OBS2: Para o cadastro da primeira pessoa ira gerar um erro por causo do hibernate_sequence, então é só abrir o Scap novamente e fazer o cadastro normalmente.
-
