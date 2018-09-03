@@ -84,4 +84,4 @@ To create a JTA datasource for Scap in WildFly, open the file $WILDFLY_HOME/stan
 # Rodando o projeto
 1. Abra a visão Servers, um clique com botão direito no wildfly e clique em Add and Remove, escolha o projeto Scap e finalize;
 
-2.Rode o Wildfly e abra localhost:8080/Scap
+2. Rode o Wildfly e abra localhost:8080/Scap
