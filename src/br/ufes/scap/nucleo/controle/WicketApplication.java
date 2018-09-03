@@ -1,4 +1,4 @@
-package br.ufes.scap.nucleo.visao;
+package br.ufes.scap.nucleo.controle;
 
 import javax.enterprise.inject.spi.BeanManager;
 import javax.naming.InitialContext;
@@ -14,12 +14,14 @@ import org.apache.wicket.request.Request;
 import org.apache.wicket.request.Response;
 import org.wicketstuff.javaee.injection.JavaEEComponentInjector;
 
+import br.ufes.scap.nucleo.visao.ConfiguracaoPage;
+
 public class WicketApplication extends WebApplication {
     
 	@Override
     public Class<? extends WebPage> getHomePage() {
-		return LoginPage.class;
-    }
+		return ConfiguracaoPage.class;
+	}
     
     public Session newSession(Request request, Response response) {
     	return new UserSession(request);

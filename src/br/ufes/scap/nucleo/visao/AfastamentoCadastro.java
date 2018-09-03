@@ -18,6 +18,7 @@ import org.apache.wicket.request.mapper.parameter.PageParameters;
 
 import br.ufes.scap.nucleo.aplicacao.Usuario;
 import br.ufes.scap.nucleo.controle.AfastamentoController;
+import br.ufes.scap.nucleo.controle.VerificaPermissaoController;
 import br.ufes.scap.nucleo.dominio.Afastamento;
 import br.ufes.scap.nucleo.dominio.Onus;
 import br.ufes.scap.nucleo.dominio.Pessoa;
@@ -30,6 +31,9 @@ public class AfastamentoCadastro extends TemplatePage {
 
 	@Inject
 	private AfastamentoController afastControle;    
+	
+	@Inject
+	private VerificaPermissaoController verificaControle;
 	
     @Inject
 	private Usuario usuarioWeb;
@@ -48,16 +52,15 @@ public class AfastamentoCadastro extends TemplatePage {
 
 	public AfastamentoCadastro(PageParameters p) {
 		
-		 Pessoa pessoa_aux = new Pessoa();
-         PageParameters params = new PageParameters();
-         pessoa_aux = aplPessoa.buscaMatricula(usuarioWeb.getMatricula());
-     	 if(!(pessoa_aux.getTipoPessoa().equals("1"))) {
-     		String info = "Somente professores tem acesso a essa tarefa";
-            params.add("mensagem",info);
- 		    setResponsePage(PermissaoPage.class,params);
- 		    return;
-      	}
-		
+		Pessoa pessoa_aux = new Pessoa();
+        PageParameters params = new PageParameters();
+        pessoa_aux = aplPessoa.buscaMatricula(usuarioWeb.getMatricula());
+
+        if(!verificaControle.verifica_prof(pessoa_aux)) {
+        	params.add("mensagem",verificaControle.getNotificacao());
+        	setResponsePage(PermissaoPage.class,params);
+        }
+        
 		Afastamento novoAfastamento = new Afastamento();
 		Form<Object> form = new Form<Object>("form");
 		TextField<String> text = new TextField<String>("nomeevento", new PropertyModel<String>(novoAfastamento,"nome_evento"));

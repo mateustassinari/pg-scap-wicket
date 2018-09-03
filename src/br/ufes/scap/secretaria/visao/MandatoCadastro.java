@@ -15,6 +15,7 @@ import org.apache.wicket.request.mapper.parameter.PageParameters;
 import org.apache.wicket.extensions.yui.calendar.DatePicker;
 
 import br.ufes.scap.nucleo.aplicacao.Usuario;
+import br.ufes.scap.nucleo.controle.VerificaPermissaoController;
 import br.ufes.scap.nucleo.dominio.Pessoa;
 import br.ufes.scap.nucleo.visao.AfastamentoBuscar;
 import br.ufes.scap.nucleo.visao.PermissaoPage;
@@ -29,6 +30,9 @@ public class MandatoCadastro extends TemplatePage {
 	@Inject
 	private MandatoController mandatoControle;
 
+	@Inject
+	private VerificaPermissaoController verificaControle;
+	
 	@Inject
     private AplPessoa aplPessoa;
 
@@ -45,13 +49,12 @@ public class MandatoCadastro extends TemplatePage {
 		Pessoa pessoa_aux = new Pessoa();
         PageParameters params = new PageParameters();
         pessoa_aux = aplPessoa.buscaMatricula(usuarioWeb.getMatricula());
-      	if(!(pessoa_aux.getTipoPessoa().equals("2"))) {
-      		String info = "Somente secretários do departamento tem acesso a esssa tarefa";
-            params.add("mensagem",info);
-			setResponsePage(PermissaoPage.class,params);
-			return;
-      	}
-		
+    
+        if(!verificaControle.verifica_secre(pessoa_aux)) {
+        	params.add("mensagem",verificaControle.getNotificacao());
+        	setResponsePage(PermissaoPage.class,params);
+        }
+     	
 		Pessoa pessoa = new Pessoa();
 		Form<Object> form = new Form<Object>("form");
 		TextField<String> text3 = new TextField<String>("matriculaoutra", new PropertyModel<String>(pessoa,"matricula"));

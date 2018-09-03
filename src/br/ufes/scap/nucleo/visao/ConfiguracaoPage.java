@@ -1,58 +1,43 @@
-package br.ufes.scap.secretaria.visao;
+package br.ufes.scap.nucleo.visao;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import javax.inject.Inject;
 
-
+import org.apache.wicket.markup.html.WebPage;
 import org.apache.wicket.markup.html.form.Button;
 import org.apache.wicket.markup.html.form.DropDownChoice;
 import org.apache.wicket.markup.html.form.Form;
 import org.apache.wicket.markup.html.form.PasswordTextField;
 import org.apache.wicket.markup.html.form.TextField;
 import org.apache.wicket.model.PropertyModel;
-import org.apache.wicket.request.mapper.parameter.PageParameters;
 
-import br.ufes.scap.nucleo.aplicacao.Usuario;
-import br.ufes.scap.nucleo.controle.VerificaPermissaoController;
 import br.ufes.scap.nucleo.dominio.Pessoa;
-import br.ufes.scap.nucleo.visao.AfastamentoBuscar;
-import br.ufes.scap.nucleo.visao.PermissaoPage;
-import br.ufes.scap.nucleo.visao.TemplatePage;
 import br.ufes.scap.secretaria.aplicacao.AplPessoa;
 import br.ufes.scap.secretaria.controle.PessoaController;
 
-public class PessoaCadastro extends TemplatePage {
+public class ConfiguracaoPage extends WebPage {
 
 	private static final long serialVersionUID = 1L;
 
 	private List<String> tipoPessoaChoices = new ArrayList<String>();
 	
+	private List<Pessoa> lista = new ArrayList<Pessoa>();
+		
 	@Inject
 	private PessoaController pessoaControle;
 	
 	@Inject
-	private VerificaPermissaoController verificaControle;
-	
-	@Inject
 	private AplPessoa aplPessoa;
 	
-	@Inject
-	private Usuario usuarioWeb;
-	
-	public PessoaCadastro(){
-	
-		Pessoa pessoa_aux = new Pessoa();
-        PageParameters params = new PageParameters();
-        pessoa_aux = aplPessoa.buscaMatricula(usuarioWeb.getMatricula());
-      
-        if(!verificaControle.verifica_secre(pessoa_aux)) {
-        	params.add("mensagem",verificaControle.getNotificacao());
-        	setResponsePage(PermissaoPage.class,params);
-        }
-        
-		tipoPessoaChoices.add("Professor");
+	public ConfiguracaoPage(){
+
+		lista = aplPessoa.listaPessoas();
+		if(lista.size() > 0) {
+			setResponsePage(LoginPage.class);	
+		}
+		
 		tipoPessoaChoices.add("Secretario");
 		Pessoa pessoa = new Pessoa();
 		Form<Object> form = new Form<Object>("form");
@@ -71,7 +56,7 @@ public class PessoaCadastro extends TemplatePage {
 			@Override
 			public void onSubmit() {
 				pessoaControle.salvar(pessoa);
-		        setResponsePage(AfastamentoBuscar.class);
+		        setResponsePage(LoginPage.class);
 			}
 			
 		};
@@ -85,8 +70,7 @@ public class PessoaCadastro extends TemplatePage {
 		form.add(text5);
 		form.add(text6);
 		form.add(button);
-
-		
+	
 	}
 	
 }

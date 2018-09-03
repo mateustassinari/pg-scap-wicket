@@ -13,21 +13,29 @@ import br.ufes.scap.nucleo.aplicacao.AplParecer;
 import br.ufes.scap.nucleo.aplicacao.Usuario;
 import br.ufes.scap.nucleo.dominio.Afastamento;
 import br.ufes.scap.nucleo.dominio.Parecer;
+import br.ufes.scap.nucleo.dominio.Pessoa;
+import br.ufes.scap.nucleo.dominio.Relator;
 import br.ufes.scap.nucleo.dominio.TipoParecer;
+import br.ufes.scap.secretaria.aplicacao.AplMandato;
 
 @Stateless
 public class ParecerController {
 
 	private String idAfastamento;
-		
+
+	private String notificacao = "";
+	
 	@Inject
 	private Usuario usuarioWeb;
 	
 	@Inject
-	private AplParecer	aplParecer;
+	private AplParecer aplParecer;
 	
 	@Inject
 	private AplAfastamento aplAfastamento;
+	
+	@Inject
+    private AplMandato aplMandato;
 	
 	public List<ParecerLista> listar(){
 		
@@ -62,6 +70,47 @@ public class ParecerController {
 		aplParecer.salvar(parecer,afastamento,usuarioWeb.getLogado(),tipoParecer);
 		return true;
 	}
+	
+	public boolean verifica(Pessoa pessoa_aux, Afastamento afastamento, Relator relator) {
+		
+		if(!(pessoa_aux.getTipoPessoa().equals("1"))) {
+        	if(afastamento.getTipoAfastamento().getTipoAfastamento().equals("INTERNACIONAL")) {  
+        		if((!afastamento.getSituacaoSolicitacao().getStatusAfastamento().equals("APROVADO_DI")) && (!afastamento.getSituacaoSolicitacao().getStatusAfastamento().equals("APROVADO_CT"))){
+        			notificacao = "O afastamento não se encontra no status: APROVADO_DI ou APROVADO_CT";
+        			return false;
+        		}
+        	} else {
+        		notificacao = "Você não pode deferir um parecer para esse tipo de afastamento";
+    			return false;
+        		}
+     	}
+
+    	if(afastamento.getSolicitante().getMatricula().equals(pessoa_aux.getMatricula())) {
+    		notificacao = "Você não pode deferir um parecer para o seu próprio afastamento";
+    		return false;
+    	}
+    	
+    	if(afastamento.getTipoAfastamento().getTipoAfastamento().equals("INTERNACIONAL")) {
+    		if(!aplMandato.checaMandato(pessoa_aux.getId_pessoa().toString())){
+    			if(!pessoa_aux.getTipoPessoa().equals("2")) {
+    				if(!afastamento.getSituacaoSolicitacao().getStatusAfastamento().equals("LIBERADO")){
+    					notificacao = "O afastamento não se encontra no status: LIBERADO";
+    					return false;
+    				}
+    				if((!(relator.getRelator().getMatricula().equals(pessoa_aux.getMatricula())))) {
+    					notificacao = "Somente o relator escolhido pode deferir um parecer para esse afastamento";
+    					return false;
+    				}
+    			}
+        	}
+    	} else {
+    			if(!afastamento.getSituacaoSolicitacao().getStatusAfastamento().equals("LIBERADO")){
+    				notificacao = "O afastamento não se encontra no status: LIBERADO";
+    				return false;
+    			}
+    		}
+    	return true;
+	}
 
 	public String getIdAfastamento() {
 		return idAfastamento;
@@ -69,6 +118,14 @@ public class ParecerController {
 
 	public void setIdAfastamento(String idAfastamento) {
 		this.idAfastamento = idAfastamento;
+	}
+
+	public String getNotificacao() {
+		return notificacao;
+	}
+
+	public void setNotificacao(String notificacao) {
+		this.notificacao = notificacao;
 	}
 
 	

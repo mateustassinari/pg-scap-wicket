@@ -12,4 +12,6 @@ public interface AplPessoa {
 	
 	List<Pessoa> buscaNome(String nome,String sobreNome);
 
+	List<Pessoa> listaPessoas();
+	
 }

@@ -1,4 +1,4 @@
-package br.ufes.scap.nucleo.visao;
+package br.ufes.scap.nucleo.controle;
 
 import org.apache.wicket.Session;
 import org.apache.wicket.protocol.http.WebSession;

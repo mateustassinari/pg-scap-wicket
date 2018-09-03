@@ -53,4 +53,9 @@ public class AplPessoaImp implements AplPessoa{
 		return pessoaDAO.buscaMatricula(matricula);
 	}
 
+	@Override
+	public List<Pessoa> listaPessoas() {
+		return pessoaDAO.listaPessoas();
+	}
+	
 }

@@ -20,7 +20,6 @@ import br.ufes.scap.nucleo.dominio.Parecer;
 import br.ufes.scap.nucleo.dominio.Pessoa;
 import br.ufes.scap.nucleo.dominio.Relator;
 import br.ufes.scap.nucleo.dominio.TipoParecer;
-import br.ufes.scap.secretaria.aplicacao.AplMandato;
 import br.ufes.scap.secretaria.aplicacao.AplPessoa;
 
 public class ParecerCadastro extends TemplatePage {
@@ -42,9 +41,6 @@ public class ParecerCadastro extends TemplatePage {
     @Inject
     private AplRelator aplRelator;
     
-    @Inject
-    private AplMandato aplMandato;
-	
 	public ParecerCadastro() {
 		
 		Pessoa pessoa_aux = new Pessoa();
@@ -54,54 +50,11 @@ public class ParecerCadastro extends TemplatePage {
         pessoa_aux = aplPessoa.buscaMatricula(usuarioWeb.getMatricula());
     	afastamento = aplAfastamento.buscaId(parecerControle.getIdAfastamento());
     	relator = aplRelator.buscaPorAfastamento(parecerControle.getIdAfastamento());
-    	if(!(pessoa_aux.getTipoPessoa().equals("1"))) {
-        	if(afastamento.getTipoAfastamento().getTipoAfastamento().equals("INTERNACIONAL")) {  
-        		if((!afastamento.getSituacaoSolicitacao().getStatusAfastamento().equals("APROVADO_DI")) && (!afastamento.getSituacaoSolicitacao().getStatusAfastamento().equals("APROVADO_CT"))){
-        			String info = "O afastamento não se encontra no status: APROVADO_DI ou APROVADO_CT";
-        			params.add("mensagem",info);
-        			setResponsePage(AfastamentoMostrar.class,params);
-        			return;
-        		}
-        	} else {
-        		String info = "Você não pode deferir um parecer para esse tipo de afastamento";
-    			params.add("mensagem",info);
-    			setResponsePage(AfastamentoMostrar.class,params);
-    			return;
-        		}
-     	}
-
-    	if(afastamento.getSolicitante().getMatricula().equals(pessoa_aux.getMatricula())) {
-    		String info = "Você não pode deferir um parecer para o seu próprio afastamento";
-    		params.add("mensagem",info);
-		    setResponsePage(AfastamentoMostrar.class,params);
-		    return;
-    	}
     	
-    	if(afastamento.getTipoAfastamento().getTipoAfastamento().equals("INTERNACIONAL")) {
-    		if(!aplMandato.checaMandato(pessoa_aux.getId_pessoa().toString())){
-    			if(!pessoa_aux.getTipoPessoa().equals("2")) {
-    				if(!afastamento.getSituacaoSolicitacao().getStatusAfastamento().equals("LIBERADO")){
-    					String info = "O afastamento não se encontra no status: LIBERADO";
-    					params.add("mensagem",info);
-    					setResponsePage(AfastamentoMostrar.class,params);
-    					return;
-    				}
-    				if((!(relator.getRelator().getMatricula().equals(pessoa_aux.getMatricula())))) {
-    					String info2 = "Somente o relator escolhido pode deferir um parecer para esse afastamento";
-    					params.add("mensagem",info2);
-    					setResponsePage(AfastamentoMostrar.class,params);
-    					return;
-    				}
-    			}
-        	}
-    	} else {
-    			if(!afastamento.getSituacaoSolicitacao().getStatusAfastamento().equals("LIBERADO")){
-    				String info = "O afastamento não se encontra no status: LIBERADO";
-    				params.add("mensagem",info);
-    				setResponsePage(AfastamentoMostrar.class,params);
-    				return;
-    			}
-    		}
+    	if(!parecerControle.verifica(pessoa_aux, afastamento, relator)) {
+    		params.add("mensagem",parecerControle.getNotificacao());
+        	setResponsePage(AfastamentoMostrar.class,params);
+    	}
     	
 		Parecer novoParecer = new Parecer();
 		Form<Object> form = new Form<Object>("form");

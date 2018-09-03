@@ -12,6 +12,7 @@ import org.apache.wicket.model.PropertyModel;
 import org.apache.wicket.request.mapper.parameter.PageParameters;
 
 import br.ufes.scap.nucleo.aplicacao.Usuario;
+import br.ufes.scap.nucleo.controle.UserSession;
 import br.ufes.scap.nucleo.dominio.Pessoa;
 import br.ufes.scap.secretaria.aplicacao.AplPessoa;
 

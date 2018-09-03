@@ -9,6 +9,7 @@ import org.apache.wicket.model.PropertyModel;
 import org.apache.wicket.request.mapper.parameter.PageParameters;
 
 import br.ufes.scap.nucleo.aplicacao.Usuario;
+import br.ufes.scap.nucleo.controle.VerificaPermissaoController;
 import br.ufes.scap.nucleo.dominio.Pessoa;
 import br.ufes.scap.nucleo.visao.PermissaoPage;
 import br.ufes.scap.nucleo.visao.TemplatePage;
@@ -23,6 +24,9 @@ public class PessoaBusca extends TemplatePage {
 	private PessoaController pessoaControle;
 	
 	@Inject
+	private VerificaPermissaoController verificaControle;
+	
+	@Inject
     private AplPessoa aplPessoa;
 	
 	@Inject
@@ -33,13 +37,12 @@ public class PessoaBusca extends TemplatePage {
 		Pessoa pessoa_aux = new Pessoa();
         PageParameters params = new PageParameters();
         pessoa_aux = aplPessoa.buscaMatricula(usuarioWeb.getMatricula());
-    	if(!(pessoa_aux.getTipoPessoa().equals("2"))) {
-    		String info = "Somente secretários do departamento tem acesso a esssa tarefa";
-    		params.add("mensagem",info);
-			setResponsePage(PermissaoPage.class,params);
-			return;
-    	}
-		
+    
+        if(!verificaControle.verifica_secre(pessoa_aux)) {
+        	params.add("mensagem",verificaControle.getNotificacao());
+        	setResponsePage(PermissaoPage.class,params);
+        }
+        
 		Pessoa pessoa = new Pessoa();
 		Form<Object> form = new Form<Object>("form");
 		TextField<String> text = new TextField<String>("nome", new PropertyModel<String>(pessoa,"nome"));

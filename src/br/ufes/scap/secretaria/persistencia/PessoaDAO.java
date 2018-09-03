@@ -14,5 +14,7 @@ public interface PessoaDAO extends BaseDAO<Pessoa> {
 	public List<Pessoa> buscaNome(String nome,String sobreNome);
 	
 	public List<Pessoa> listaProfessores();
+	
+	public List<Pessoa> listaPessoas();
 
 }

@@ -6,6 +6,7 @@ import org.apache.wicket.markup.html.link.Link;
 import org.apache.wicket.markup.html.panel.Panel;
 import org.apache.wicket.model.IModel;
 
+import br.ufes.scap.nucleo.controle.UserSession;
 import br.ufes.scap.secretaria.visao.MandatoCadastro;
 import br.ufes.scap.secretaria.visao.PessoaBusca;
 import br.ufes.scap.secretaria.visao.PessoaCadastro;

@@ -14,7 +14,6 @@ import br.ufes.scap.nucleo.aplicacao.Usuario;
 import br.ufes.scap.nucleo.controle.RelatorController;
 import br.ufes.scap.nucleo.dominio.Afastamento;
 import br.ufes.scap.nucleo.dominio.Pessoa;
-import br.ufes.scap.secretaria.aplicacao.AplMandato;
 import br.ufes.scap.secretaria.aplicacao.AplPessoa;
 
 public class RelatorCadastro extends TemplatePage {
@@ -33,9 +32,6 @@ public class RelatorCadastro extends TemplatePage {
 	@Inject
     private AplAfastamento aplAfastamento;
 	
-	@Inject
-    private AplMandato aplMandato;
-	
 	public RelatorCadastro(PageParameters p) {
 		
 		Pessoa pessoa_aux = new Pessoa();
@@ -43,20 +39,12 @@ public class RelatorCadastro extends TemplatePage {
         PageParameters params = new PageParameters();
         pessoa_aux = aplPessoa.buscaMatricula(usuarioWeb.getMatricula());
     	afastamento = aplAfastamento.buscaId(relatorControle.getIdAfastamento());
-    	if(!(aplMandato.checaMandato(pessoa_aux.getId_pessoa().toString()))) {
-    		  String info = "Somente o chefe do departamento tem acesso a essa tarefa";
-    		  params.add("mensagem",info);
-			  setResponsePage(AfastamentoMostrar.class,params);
-			  return;
+    
+    	if(!relatorControle.verifica(pessoa_aux, afastamento)) {
+    		params.add("mensagem",relatorControle.getNotificacao());
+        	setResponsePage(AfastamentoMostrar.class,params);
     	}
     	
-    	if(!afastamento.getSituacaoSolicitacao().getStatusAfastamento().equals("INICIADO")) {
-    		String info = "O afastamento não se encontra no status: INICIADO";
-    		params.add("mensagem",info);
-			setResponsePage(AfastamentoMostrar.class,params);
-			return;
-    	}
-
     	Pessoa pessoa = new Pessoa();
 		Form<Object> form = new Form<Object>("form");
 		TextField<String> text = new TextField<String>("matriculaRelator", new PropertyModel<String>(pessoa,"matricula"));

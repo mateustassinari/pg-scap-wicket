@@ -29,6 +29,10 @@ public class ParentescoController {
 			notificacao = "Matrícula não existe";
 			return false;
 		}
+		if(matricula1.equals(pessoaaux.getMatricula())) {
+			notificacao = "Não é possível cadastrar parentesco com uma pessoa";
+			return false;
+		}
 		
 		if(pessoaaux.getTipoPessoa().equals("1")) {
 			if(aplParentesco.checaParentesco(matricula1,matricula2)) {

@@ -11,7 +11,6 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 import javax.persistence.QueryTimeoutException;
 
-
 import br.ufes.scap.nucleo.dominio.Pessoa;
 import br.ufes.scap.nucleo.persistencia.JPABaseDAO;
 
@@ -74,6 +73,23 @@ public class JPAPessoaDAO extends JPABaseDAO<Pessoa> implements PessoaDAO{
 			System.out.println("Pessoa inexistente");
 		}catch(QueryTimeoutException e3){
 			System.out.println("Query timmed out");
+		}catch(Exception e4){
+			e4.printStackTrace();
+		}
+		return null;
+	}
+	
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<Pessoa> listaPessoas() {
+		List<Pessoa> lista = new ArrayList<Pessoa>();		
+		try{
+			Query q = manager.createQuery("SELECT a FROM Pessoa a");
+			lista = q.getResultList();
+			return lista;
+		}catch(QueryTimeoutException e3){
+			System.out.println("Query timmed out");
+			return null;
 		}catch(Exception e4){
 			e4.printStackTrace();
 		}

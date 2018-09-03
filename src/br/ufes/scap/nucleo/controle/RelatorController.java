@@ -8,6 +8,7 @@ import br.ufes.scap.nucleo.aplicacao.AplRelator;
 import br.ufes.scap.nucleo.dominio.Afastamento;
 import br.ufes.scap.nucleo.dominio.Pessoa;
 import br.ufes.scap.nucleo.dominio.Relator;
+import br.ufes.scap.secretaria.aplicacao.AplMandato;
 import br.ufes.scap.secretaria.aplicacao.AplParentesco;
 import br.ufes.scap.secretaria.aplicacao.AplPessoa;
 
@@ -29,6 +30,9 @@ public class RelatorController {
 
 	@Inject
 	private AplParentesco aplParentesco;
+	
+	@Inject
+    private AplMandato aplMandato;
 
 	public boolean salva(String matricula) {
 		
@@ -56,6 +60,20 @@ public class RelatorController {
 			aplRelator.salvar(relator, afastamento);
 			return true;
 			}
+	}
+	
+	public boolean verifica(Pessoa pessoa_aux, Afastamento afastamento) {
+		
+		if(!(aplMandato.checaMandato(pessoa_aux.getId_pessoa().toString()))) {
+			notificacao = "Somente o chefe do departamento tem acesso a essa tarefa";
+  		  	return false;
+		}
+  	
+		if(!afastamento.getSituacaoSolicitacao().getStatusAfastamento().equals("INICIADO")) {
+			notificacao = "O afastamento não se encontra no status: INICIADO";
+			return false;
+		}
+		return true;
 	}
 
 	public String getIdAfastamento() {
