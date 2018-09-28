@@ -45,7 +45,7 @@ public class JPAMandatoDAO extends JPABaseDAO<Mandato> implements MandatoDAO {
 	public boolean checaMandato(String id_professor){
 		Mandato mandato = new Mandato();
 		try{
-			Query q = manager.createQuery("SELECT a FROM Mandato a WHERE a.pessoa =" + id_professor);
+			Query q = manager.createQuery("SELECT a FROM Mandato a WHERE a.pessoa.id_pessoa =" + id_professor);
 			mandato = (Mandato)q.getSingleResult();
 			Calendar cal = Calendar.getInstance();
 			if(cal.after(mandato.getData_inicio()) && cal.before(mandato.getData_fim())){

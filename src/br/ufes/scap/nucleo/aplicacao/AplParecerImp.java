@@ -12,7 +12,6 @@ import br.ufes.scap.nucleo.dominio.SituacaoSolic;
 import br.ufes.scap.nucleo.dominio.TipoParecer;
 import br.ufes.scap.nucleo.persistencia.AfastamentoDAO;
 import br.ufes.scap.nucleo.persistencia.ParecerDAO;
-import br.ufes.scap.secretaria.persistencia.MandatoDAO;
 
 @Stateless
 public class AplParecerImp implements AplParecer{
@@ -22,9 +21,6 @@ public class AplParecerImp implements AplParecer{
 	
 	@Inject
 	private AfastamentoDAO afastamentoDAO;
-	
-	@Inject
-	private MandatoDAO mandatoDAO;
 	
 	@Override
 	public void salvar(Parecer parecer, Afastamento afastamento, Pessoa usuario, TipoParecer tipoParecer) {
@@ -49,21 +45,12 @@ public class AplParecerImp implements AplParecer{
 							}
 						}	
 			afastamentoDAO.merge(afastamento);
-			} else if(!(mandatoDAO.checaMandato(usuario.getId().toString()))) {
-					if(tipoParecer.get().equals("FAVORAVEL")){
-			       		SituacaoSolic situacao = SituacaoSolic.APROVADO_DI;
-			       		afastamento.setSituacaoSolicitacao(situacao);
-			       	}else{
-			       		SituacaoSolic situacao = SituacaoSolic.REPROVADO;
-			       		afastamento.setSituacaoSolicitacao(situacao);
-			       		}
-			       	afastamentoDAO.merge(afastamento);
-					} else if(tipoParecer.get().equals("DESFAVORAVEL")){
+			} else if(tipoParecer.get().equals("DESFAVORAVEL")){
 							SituacaoSolic situacao = SituacaoSolic.REPROVADO;
 							afastamento.setSituacaoSolicitacao(situacao);
 							} 
 							else {
-							SituacaoSolic situacao = SituacaoSolic.INICIADO;
+							SituacaoSolic situacao = SituacaoSolic.APROVADO_DI;
 							afastamento.setSituacaoSolicitacao(situacao);
 							}
 					afastamentoDAO.merge(afastamento);

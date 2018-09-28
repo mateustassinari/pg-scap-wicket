@@ -183,10 +183,7 @@ public class AfastamentoController {
 			if(afastamento.getTipoAfastamento().getTipoAfastamento().equals("INTERNACIONAL")) {
 				notificacao = "Somente o relator pode aprovar esse afastamento";
 				return false;
-			} else {
-				notificacao = "Pedido de afastamento já foi concluído";
-				return false;
-			}
+			} 
 		}
 		
 		aplAfastamento.mudarStatus(afastamento,novoStatus,usuarioWeb.getLogado());

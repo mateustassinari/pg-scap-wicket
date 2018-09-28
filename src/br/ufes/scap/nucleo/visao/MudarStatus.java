@@ -12,8 +12,10 @@ import org.apache.wicket.markup.html.panel.FeedbackPanel;
 import org.apache.wicket.model.Model;
 import org.apache.wicket.request.mapper.parameter.PageParameters;
 
+import br.ufes.scap.nucleo.aplicacao.AplAfastamento;
 import br.ufes.scap.nucleo.aplicacao.Usuario;
 import br.ufes.scap.nucleo.controle.AfastamentoController;
+import br.ufes.scap.nucleo.dominio.Afastamento;
 
 public class MudarStatus extends TemplatePage {
 
@@ -25,6 +27,9 @@ public class MudarStatus extends TemplatePage {
 	@Inject
 	private Usuario usuarioWeb;
 
+	@Inject
+	private AplAfastamento aplAfastamento;
+	
 	private List<String> casoProfessor = Arrays.asList("CANCELADO");
 	
 	private List<String> casoSecretario = Arrays.asList("APROVADO_DI","ARQUIVADO");
@@ -36,6 +41,12 @@ public class MudarStatus extends TemplatePage {
 	public MudarStatus(PageParameters p) {
 		
         PageParameters params = new PageParameters();
+		Afastamento afastamento = new Afastamento();
+	    afastamento = aplAfastamento.buscaId(afastControle.getIdAfastamento());
+	    if(afastamento.getSituacaoSolicitacao().getStatusAfastamento().equals("ARQUIVADO") || afastamento.getSituacaoSolicitacao().getStatusAfastamento().equals("CANCELADO")) {
+			params.add("mensagem","Pedido já se encontra finalizado");
+	    	setResponsePage(AfastamentoMostrar.class,params);
+	    }
 		Form<Object> form = new Form<Object>("form");
 		add(form);
 		if(usuarioWeb.getLogado().getTipoPessoa().equals("1")) {

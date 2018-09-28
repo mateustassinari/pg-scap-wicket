@@ -42,7 +42,7 @@ public class JPAParentescoDAO extends JPABaseDAO<Parentesco> implements Parentes
 		@SuppressWarnings("unused")
 		Parentesco parentesco = new Parentesco();
 		try{
-			Query q = manager.createQuery("SELECT a FROM Parentesco a WHERE a.pessoa1 = '" + id_pessoa1 + "' AND a.pessoa2 = '" + id_pessoa2+"'");
+			Query q = manager.createQuery("SELECT a FROM Parentesco a WHERE a.pessoa1.matricula = '" + id_pessoa1 + "' AND a.pessoa2.matricula = '" + id_pessoa2+"'");
 			parentesco = (Parentesco)q.getSingleResult();
 			return true;
 		}catch(NoResultException e1) {

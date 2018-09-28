@@ -46,8 +46,8 @@ public class RelatorController {
 			return false;
 		}
 		
-		if (aplParentesco.checaParentesco(afastamento.getSolicitante().getId_pessoa().toString(),
-				pessoaaux.getId_pessoa().toString())) {
+		if (aplParentesco.checaParentesco(afastamento.getSolicitante().getMatricula(),
+				pessoaaux.getMatricula())) {
 			notificacao = "Relator não pode ser um parente do solicitante do afastamento";
 			return false;
 		} 

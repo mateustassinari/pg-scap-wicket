@@ -16,7 +16,6 @@ import br.ufes.scap.nucleo.dominio.Parecer;
 import br.ufes.scap.nucleo.dominio.Pessoa;
 import br.ufes.scap.nucleo.dominio.Relator;
 import br.ufes.scap.nucleo.dominio.TipoParecer;
-import br.ufes.scap.secretaria.aplicacao.AplMandato;
 
 @Stateless
 public class ParecerController {
@@ -33,9 +32,6 @@ public class ParecerController {
 	
 	@Inject
 	private AplAfastamento aplAfastamento;
-	
-	@Inject
-    private AplMandato aplMandato;
 	
 	public List<ParecerLista> listar(){
 		
@@ -91,24 +87,17 @@ public class ParecerController {
     	}
     	
     	if(afastamento.getTipoAfastamento().getTipoAfastamento().equals("INTERNACIONAL")) {
-    		if(!aplMandato.checaMandato(pessoa_aux.getId_pessoa().toString())){
-    			if(!pessoa_aux.getTipoPessoa().equals("2")) {
-    				if(!afastamento.getSituacaoSolicitacao().getStatusAfastamento().equals("LIBERADO")){
-    					notificacao = "O afastamento não se encontra no status: LIBERADO";
-    					return false;
-    				}
-    				if((!(relator.getRelator().getMatricula().equals(pessoa_aux.getMatricula())))) {
-    					notificacao = "Somente o relator escolhido pode deferir um parecer para esse afastamento";
-    					return false;
-    				}
-    			}
-        	}
-    	} else {
-    			if(!afastamento.getSituacaoSolicitacao().getStatusAfastamento().equals("LIBERADO")){
-    				notificacao = "O afastamento não se encontra no status: LIBERADO";
-    				return false;
-    			}
-    		}
+			if(!pessoa_aux.getTipoPessoa().equals("2")) {
+				if(!afastamento.getSituacaoSolicitacao().getStatusAfastamento().equals("LIBERADO")){
+					notificacao = "O afastamento não se encontra no status: LIBERADO";
+					return false;
+				}
+				if((!(relator.getRelator().getMatricula().equals(pessoa_aux.getMatricula())))) {
+					notificacao = "Somente o relator escolhido pode deferir um parecer para esse afastamento";
+					return false;
+				}
+			}		
+    	}
     	return true;
 	}
 
