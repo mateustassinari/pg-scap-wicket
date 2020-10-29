@@ -1,5 +1,5 @@
 # pg-scap-wicket
-Para rodar o projeto vamos precisar de:
+To run the project we will need:
 
 * Eclipse IDE
 * Wildfly
@@ -81,7 +81,8 @@ To create a JTA datasource for Scap in WildFly, open the file $WILDFLY_HOME/stan
 </datasource>
 ```
 
-# Rodando o projeto
-1. Abra a visão Servers, um clique com botão direito no wildfly e clique em Add and Remove, escolha o projeto Scap e finalize;
+# Running the project
+1. Open the Servers view, right-click the wildfly and click Add and Remove, choose the Scap project and finish;
 
-2. Rode o Wildfly e abra localhost:8080/Scap
+2. Run Wildfly and open localhost:8080/Scap
+
