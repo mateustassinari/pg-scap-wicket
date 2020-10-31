@@ -56,7 +56,7 @@ public class AfastamentoController {
 		cal5.setTime(formatada.parse(data_fimEvento));
 
 		if(cal2.after(cal3) || cal4.after(cal5)) {
-			notificacao = "Data de inÌcio n„o pode ser superior a Data final";							
+			notificacao = "Data de in√≠cio n√£o pode ser superior a Data final";							
 			return false;
 		}
 
@@ -168,12 +168,12 @@ public class AfastamentoController {
 			}	
 			if(afastamento.getTipoAfastamento().getTipoAfastamento().equals("NACIONAL")) {
 				if(!afastamento.getSituacaoSolicitacao().getStatusAfastamento().equals("APROVADO_DI")) {
-					notificacao = "Pedido de afastamento ainda n„o foi concluÌdo";
+					notificacao = "Pedido de afastamento ainda n√£o foi conclu√≠do";
 					return false;
 				}
 			} else {
 					if(!afastamento.getSituacaoSolicitacao().getStatusAfastamento().equals("APROVADO_PRPPG")) {
-						notificacao = "Pedido de afastamento ainda n„o foi concluÌdo";
+						notificacao = "Pedido de afastamento ainda n√£o foi conclu√≠do";
 						return false;
 					}
 				}

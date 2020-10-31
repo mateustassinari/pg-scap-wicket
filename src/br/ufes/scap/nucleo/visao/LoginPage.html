@@ -1,79 +1,80 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:wicket="http://wicket.apache.org">
-<wicket:head>
-<title>SCAP - Login</title>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet"
-    href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-<script
-    src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<script
-    src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-</wicket:head>
-<style>
-body {
-  padding-top: 40px;
-  padding-bottom: 40px;
-  background-color: #eee;
-}
 
-.feedbackPanelERROR{
-  max-width: 330px;
-  padding: 15px;
-  margin: 0 auto;
-  color: red;
-}
+  <wicket:head>
+    <title>SCAP - Login</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  </wicket:head>
+  <style>
+      body {
+        padding-top: 40px;
+        padding-bottom: 40px;
+        background-color: #eee;
+      }
 
-.form-signin {
-  max-width: 330px;
-  padding: 15px;
-  margin: 0 auto;
-}
-.form-signin .form-signin-heading,
-.form-signin .checkbox {
-  margin-bottom: 10px;
-  margin-left: 55px;
-}
-.form-signin .checkbox {
-  font-weight: normal;
-}
-.form-signin .form-control {
-  position: relative;
-  height: auto;
-  -webkit-box-sizing: border-box;
-     -moz-box-sizing: border-box;
-          box-sizing: border-box;
-  padding: 10px;
-  font-size: 16px;
-}
-.form-signin .form-control:focus {
-  z-index: 2;
-}
-.form-signin input[type="matricula"] {
-  margin-bottom: -1px;
-  border-bottom-right-radius: 0;
-  border-bottom-left-radius: 0;
-}
-.form-signin input[type="password"] {
-  margin-bottom: 10px;
-  border-top-left-radius: 0;
-  border-top-right-radius: 0;
-}
-.img {
-margin-left: 390px;
-max-width:200px;
-width: auto;
-}
-</style>
-<body>
-  <div class="container">
-		<form class="form-signin" role="form" wicket:id="logar">
+      .feedbackPanelERROR{
+        max-width: 330px;
+        padding: 15px;
+        margin: 0 auto;
+        color: red;
+      }
+
+      .form-signin {
+        max-width: 330px;
+        padding: 15px;
+        margin: 0 auto;
+      }
+      .form-signin .form-signin-heading,
+      .form-signin .checkbox {
+        margin-bottom: 10px;
+        margin-left: 55px;
+      }
+      .form-signin .checkbox {
+        font-weight: normal;
+      }
+      .form-signin .form-control {
+        position: relative;
+        height: auto;
+        -webkit-box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        box-sizing: border-box;
+        padding: 10px;
+        font-size: 16px;
+      }
+      .form-signin .form-control:focus {
+        z-index: 2;
+      }
+      .form-signin input[type="matricula"] {
+        margin-bottom: -1px;
+        border-bottom-right-radius: 0;
+        border-bottom-left-radius: 0;
+      }
+      .form-signin input[type="password"] {
+        margin-bottom: 10px;
+        border-top-left-radius: 0;
+        border-top-right-radius: 0;
+      }
+      .img {
+      margin-left: 390px;
+      max-width:200px;
+      width: auto;
+      }
+  </style>
+
+
+  <body>
+    <div class="container">
+      <form class="form-signin" role="form" wicket:id="logar">
         <h2 class="form-signin-heading">SCAP - Login</h2>
-        <input type="text" wicket:id="matricula" class="form-control" placeholder="Matrícula" required autofocus>
+        <input type="text" wicket:id="matricula" class="form-control" placeholder="MatrÃ­cula" required autofocus>
         <input type="password" wicket:id="password" class="form-control" placeholder="Password" required>
         <button class="btn btn-lg btn-primary btn-block" type="submit" wicket:id="buttonLogar">Entrar</button>
       </form>
-<span wicket:id="feedback">Message goes here</span>      
- </div>    
-</body>
+    <span wicket:id="feedback">Message goes here</span>      
+    </div>    
+  </body>
+
 </html>

@@ -39,9 +39,7 @@ public class MandatoCadastro extends TemplatePage {
 	@Inject
 	private Usuario usuarioWeb;
 	
-    @SuppressWarnings("unused")
 	private final Date date = new Date();
-    @SuppressWarnings("unused")
 	private final Date date2 = new Date();
 	
 	public MandatoCadastro(PageParameters p) {

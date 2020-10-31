@@ -44,7 +44,7 @@ public class MudarStatus extends TemplatePage {
 		Afastamento afastamento = new Afastamento();
 	    afastamento = aplAfastamento.buscaId(afastControle.getIdAfastamento());
 	    if(afastamento.getSituacaoSolicitacao().getStatusAfastamento().equals("ARQUIVADO") || afastamento.getSituacaoSolicitacao().getStatusAfastamento().equals("CANCELADO")) {
-			params.add("mensagem","Pedido j· se encontra finalizado");
+			params.add("mensagem","Pedido j√° se encontra finalizado");
 	    	setResponsePage(AfastamentoMostrar.class,params);
 	    }
 		Form<Object> form = new Form<Object>("form");
@@ -59,29 +59,29 @@ public class MudarStatus extends TemplatePage {
 		
 		Button button = new Button("button") {
 				
-				private static final long serialVersionUID = 1L;
+			private static final long serialVersionUID = 1L;
 
-				@Override
-				public void onSubmit() {
+			@Override
+			public void onSubmit() {
 		
-					if(usuarioWeb.getLogado().getTipoPessoa().equals("1")) {
-						if(afastControle.mudarStatus(prof.getDefaultModelObjectAsString())) {
-							setResponsePage(AfastamentoBuscar.class);
-						} else {
-							params.add("mensagem",afastControle.getNotificacao());
-							setResponsePage(MudarStatus.class,params);
-							}
+				if(usuarioWeb.getLogado().getTipoPessoa().equals("1")) {
+					if(afastControle.mudarStatus(prof.getDefaultModelObjectAsString())) {
+						setResponsePage(AfastamentoBuscar.class);
 					} else {
-						if(afastControle.mudarStatus(secre.getDefaultModelObjectAsString())) {
-							setResponsePage(AfastamentoBuscar.class);
-						} else {
-							params.add("mensagem",afastControle.getNotificacao());
-							setResponsePage(MudarStatus.class,params);
-							}
+						params.add("mensagem",afastControle.getNotificacao());
+						setResponsePage(MudarStatus.class,params);
 						}
-				}
+				} else {
+					if(afastControle.mudarStatus(secre.getDefaultModelObjectAsString())) {
+						setResponsePage(AfastamentoBuscar.class);
+					} else {
+						params.add("mensagem",afastControle.getNotificacao());
+						setResponsePage(MudarStatus.class,params);
+						}
+					}
+			}
 				
-		 };
+		};
 
 		form.add(button);
 		

@@ -9,7 +9,6 @@ import javax.inject.Inject;
 
 import org.apache.wicket.markup.html.form.upload.FileUpload;
 
-
 import br.ufes.scap.nucleo.dominio.Afastamento;
 import br.ufes.scap.nucleo.dominio.Documento;
 import br.ufes.scap.secretaria.aplicacao.AplDocumento;

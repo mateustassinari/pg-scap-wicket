@@ -72,24 +72,24 @@ public class ParecerController {
 		if(!(pessoa_aux.getTipoPessoa().equals("1"))) {
         	if(afastamento.getTipoAfastamento().getTipoAfastamento().equals("INTERNACIONAL")) {  
         		if((!afastamento.getSituacaoSolicitacao().getStatusAfastamento().equals("APROVADO_DI")) && (!afastamento.getSituacaoSolicitacao().getStatusAfastamento().equals("APROVADO_CT"))){
-        			notificacao = "O afastamento não se encontra no status: APROVADO_DI ou APROVADO_CT";
+        			notificacao = "O afastamento nÃ£o se encontra no status: APROVADO_DI ou APROVADO_CT";
         			return false;
         		}
         	} else {
-        		notificacao = "Você não pode deferir um parecer para esse tipo de afastamento";
+        		notificacao = "VocÃª nÃ£o pode deferir um parecer para esse tipo de afastamento";
     			return false;
         		}
      	}
 
     	if(afastamento.getSolicitante().getMatricula().equals(pessoa_aux.getMatricula())) {
-    		notificacao = "Você não pode deferir um parecer para o seu próprio afastamento";
+    		notificacao = "VocÃª nÃ£o pode deferir um parecer para o seu prÃ³prio afastamento";
     		return false;
     	}
     	
     	if(afastamento.getTipoAfastamento().getTipoAfastamento().equals("INTERNACIONAL")) {
 			if(!pessoa_aux.getTipoPessoa().equals("2")) {
 				if(!afastamento.getSituacaoSolicitacao().getStatusAfastamento().equals("LIBERADO")){
-					notificacao = "O afastamento não se encontra no status: LIBERADO";
+					notificacao = "O afastamento nÃ£o se encontra no status: LIBERADO";
 					return false;
 				}
 				if((!(relator.getRelator().getMatricula().equals(pessoa_aux.getMatricula())))) {

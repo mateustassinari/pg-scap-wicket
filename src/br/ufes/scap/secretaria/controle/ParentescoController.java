@@ -25,26 +25,28 @@ public class ParentescoController {
 		
 		Pessoa pessoaaux = new Pessoa();
 		pessoaaux = aplPessoa.buscaMatricula(matricula2);
+
 		if(pessoaaux == null){
-			notificacao = "MatrÌcula n„o existe";
+			notificacao = "Matr√≠cula n√£o existe";
 			return false;
 		}
+
 		if(matricula1.equals(pessoaaux.getMatricula())) {
-			notificacao = "N„o È possÌvel cadastrar parentesco com uma pessoa";
+			notificacao = "N√£o √© poss√≠vel cadastrar parentesco com uma pessoa";
 			return false;
 		}
 		
 		if(pessoaaux.getTipoPessoa().equals("1")) {
 			if(aplParentesco.checaParentesco(matricula1,matricula2)) {
-				notificacao = "Parentesco j· foi cadastrado";
+				notificacao = "Parentesco j√° foi cadastrado";
 				return false;
 			}
 			aplParentesco.salvar(matricula1,matricula2,tipo);
 			return true;
 		} else {
-			notificacao =  "… possivel cadastrar parentesco somente entre professores";
+			notificacao =  "√â possivel cadastrar parentesco somente entre professores";
 			return false;
-			}
+		}
 	}
 	
 	public String getMatricula1() {

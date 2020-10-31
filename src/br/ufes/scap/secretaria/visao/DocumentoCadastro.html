@@ -1,62 +1,46 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:wicket="http://wicket.apache.org">
-<wicket:head>
-<title>Cadastro Documento</title>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet"
-    href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-<script
-    src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<script
-    src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-</wicket:head>
-<body>
+  
+  <wicket:head>
+    <title>Cadastro Documento</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  </wicket:head>
 
-        <wicket:extend>
-
-       <div style="margin: 40px;">
-
-<div class="container">
-
-<form class="form-horizontal" wicket:id="form">
-<fieldset>
-<!-- Form Name -->
-<legend>Entre com os dados do Documento:</legend>
-
-<!-- Text input-->
-<div class="control-group" >
-  <label class="control-label" for="textinput">Título do Arquivo:</label>
-  <div class="controls">
-    <input wicket:id="titulo" type="text" placeholder="Título do Arquivo" class="input-large" required>
-  </div>
-</div>
-
-<!-- File Button --> 
-<div class="control-group">
-  <label class="control-label" for="filebutton">Arquivo</label>
-  <div class="controls">
-    <input wicket:id="file" class="input-file" type="file" required>
-  </div>
-</div>
-
-<!-- Button -->
-<div class="control-group">
-  <label class="control-label" for="singlebutton"></label>
-  <div class="controls">
-    <button type="submit" wicket:id="button" class="btn btn-primary">Salvar</button>
-  </div>
-</div>
-
-
-</fieldset>
-</form>
-
-</div>
-</div>
-</wicket:extend>
-
-
-</body>
+  <body>
+    <wicket:extend>
+      <div style="margin: 40px;">
+        <div class="container">
+          <form class="form-horizontal" wicket:id="form">
+            <fieldset>
+              <legend>Entre com os dados do Documento:</legend>
+              <div class="control-group" >
+                <label class="control-label" for="textinput">Tï¿½tulo do Arquivo:</label>
+                <div class="controls">
+                  <input wicket:id="titulo" type="text" placeholder="Tï¿½tulo do Arquivo" class="input-large" required>
+                </div>
+              </div>
+              <div class="control-group">
+                <label class="control-label" for="filebutton">Arquivo</label>
+                <div class="controls">
+                  <input wicket:id="file" class="input-file" type="file" required>
+                </div>
+              </div>
+              <div class="control-group">
+                <label class="control-label" for="singlebutton"></label>
+                <div class="controls">
+                  <button type="submit" wicket:id="button" class="btn btn-primary">Salvar</button>
+                </div>
+              </div>
+            </fieldset>
+          </form>
+        </div>
+      </div>
+    </wicket:extend>
+  </body>
+  
 </html>
 
 

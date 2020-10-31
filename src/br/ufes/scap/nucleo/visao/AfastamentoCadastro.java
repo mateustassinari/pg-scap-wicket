@@ -41,13 +41,9 @@ public class AfastamentoCadastro extends TemplatePage {
     @Inject
     private AplPessoa aplPessoa;
    
-	@SuppressWarnings("unused")
 	private final Date date = new Date();
-	@SuppressWarnings("unused")
 	private final Date date2 = new Date();
-	@SuppressWarnings("unused")
 	private final Date date3 = new Date();
-	@SuppressWarnings("unused")
 	private final Date date4 = new Date();
 
 	public AfastamentoCadastro(PageParameters p) {

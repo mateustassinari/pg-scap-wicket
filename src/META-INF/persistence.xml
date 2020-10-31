@@ -1,27 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <persistence version="2.1" xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
+
 	<persistence-unit name="Scap">
-		<jta-data-source>java:/jboss/datasources/Scap</jta-data-source>
-<class>br.ufes.scap.nucleo.dominio.Afastamento</class>
-
-<class>br.ufes.scap.nucleo.dominio.Documento</class>
-
-<class>br.ufes.scap.nucleo.dominio.Mandato</class>
-
-<class>br.ufes.scap.nucleo.dominio.Parecer</class>
-
-<class>br.ufes.scap.nucleo.dominio.Parentesco</class>
-
-<class>br.ufes.scap.nucleo.dominio.Pessoa</class>
-
-<class>br.ufes.scap.nucleo.dominio.Relator</class>
-
 		
+		<jta-data-source>java:/jboss/datasources/Scap</jta-data-source>
+
+		<class>br.ufes.scap.nucleo.dominio.Afastamento</class>
+		<class>br.ufes.scap.nucleo.dominio.Documento</class>
+		<class>br.ufes.scap.nucleo.dominio.Mandato</class>
+		<class>br.ufes.scap.nucleo.dominio.Parecer</class>
+		<class>br.ufes.scap.nucleo.dominio.Parentesco</class>
+		<class>br.ufes.scap.nucleo.dominio.Pessoa</class>
+		<class>br.ufes.scap.nucleo.dominio.Relator</class>
+
 		<properties>
 			<property name="hibernate.dialect" value="org.hibernate.dialect.MySQLDialect" />
 			<property name="hibernate.hbm2ddl.auto" value="update" />
 			<property name="hibernate.show_sql" value="true" />
 			<property name="hibernate.format_sql" value="true" />
 		</properties>
+
 	</persistence-unit>
+
 </persistence>

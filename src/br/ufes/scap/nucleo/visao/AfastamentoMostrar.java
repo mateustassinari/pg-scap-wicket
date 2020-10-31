@@ -41,7 +41,6 @@ public class AfastamentoMostrar extends TemplatePage {
 	
 	private WebMarkupContainer containerTable;
 
-	@SuppressWarnings({ "rawtypes", "unchecked" })
 	public AfastamentoMostrar (PageParameters p) {
 		
 		List<String> dados = afastControle.buscar();
@@ -71,11 +70,11 @@ public class AfastamentoMostrar extends TemplatePage {
         parecerControle.setIdAfastamento(afastControle.getIdAfastamento());
         documentoControle.setIdAfastamento(afastControle.getIdAfastamento());
         
-        add(new BookmarkablePageLink("mudar_status", MudarStatus.class));   
-        add(new BookmarkablePageLink("deferir_parecer", ParecerCadastro.class));
-        add(new BookmarkablePageLink("relator", RelatorCadastro.class));   
-        add(new BookmarkablePageLink("documento", DocumentoCadastro.class));   
-        add(new BookmarkablePageLink("ver_parecer", ParecerMostrar.class));   
+        add(new BookmarkablePageLink<Void>("mudar_status", MudarStatus.class));   
+        add(new BookmarkablePageLink<Void>("deferir_parecer", ParecerCadastro.class));
+        add(new BookmarkablePageLink<Void>("relator", RelatorCadastro.class));   
+        add(new BookmarkablePageLink<Void>("documento", DocumentoCadastro.class));   
+        add(new BookmarkablePageLink<Void>("ver_parecer", ParecerMostrar.class));   
 
         List<DocumentoLista> tabela = afastControle.getListaDocumento();
 		

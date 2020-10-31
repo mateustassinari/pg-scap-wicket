@@ -15,16 +15,15 @@ public class HeaderPanel extends Panel {
  
 	private static final long serialVersionUID = 5218374612129395403L;
  
-    @SuppressWarnings({ "unchecked", "rawtypes" })
 	public HeaderPanel(String id) {
 
     	super(id);
-        add(new BookmarkablePageLink("afastamentoBusca",AfastamentoBuscar.class));   
-        add(new BookmarkablePageLink("afastamentoFormulario",AfastamentoCadastro.class)); 
-        add(new BookmarkablePageLink("pessoaBusca",PessoaBusca.class));
-        add(new BookmarkablePageLink("pessoaFormulario",PessoaCadastro.class));
-        add(new BookmarkablePageLink("MandatoFormulario",MandatoCadastro.class));          
-        add(new Link("logout") {
+        add(new BookmarkablePageLink<Void>("afastamentoBusca",AfastamentoBuscar.class));   
+        add(new BookmarkablePageLink<Void>("afastamentoFormulario",AfastamentoCadastro.class)); 
+        add(new BookmarkablePageLink<Void>("pessoaBusca",PessoaBusca.class));
+        add(new BookmarkablePageLink<Void>("pessoaFormulario",PessoaCadastro.class));
+        add(new BookmarkablePageLink<Void>("MandatoFormulario",MandatoCadastro.class));          
+        add(new Link<Void>("logout") {
             
 			private static final long serialVersionUID = 1L;
 			
@@ -35,7 +34,7 @@ public class HeaderPanel extends Panel {
             }
 
 			@Override
-			public MarkupContainer setDefaultModel(IModel model) {
+			public MarkupContainer setDefaultModel(IModel<?> model) {
 				return null;
 			}
         

@@ -1,116 +1,100 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:wicket="http://wicket.apache.org">
-<wicket:head>
-<title>Dados do Afastamento</title>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet"
-    href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-<script
-    src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<script
-    src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<style>
-.feedbackPanelERROR{
-  color: red;
-  margin-top: 15px;
-}
-</style>
-</wicket:head>
-<body>
 
-<wicket:extend>
+	<wicket:head>
+    <title>Dados do Afastamento</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <style>
+      .feedbackPanelERROR{
+      color: red;
+      margin-top: 15px;
+      }
+    </style>
+	</wicket:head>
 
-       <div style="margin: 40px;">
+  <body>
+    <wicket:extend>
+      <div style="margin: 40px;">
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-4">
+              <div class="panel panel-info">           
+                <div class="panel-heading" style="color:#fff;background-color:#337ab7;border-color:#2e6da4">
+					        <h3 class="panel-title">Solicitante</h3>
+					      </div>
+					      <div class="panel-body">
+                  <span wicket:id="nome"></span><br>
+                  MatrÃ­cula: <span wicket:id="matricula"></span><br>
+                  Email: <span wicket:id="email"></span><br>
+                  Tel: <span wicket:id="tel"></span>
+					      </div>
+				      </div>
+	          </div>
+            <div class="col-lg-4">
+              <div class="panel panel-info">
+                <div class="panel-heading" style="color:#fff;background-color:#337ab7;border-color:#2e6da4">
+                  <h3 class="panel-title">Evento</h3>
+                </div>
+                <div class="panel-body">
+                  <span wicket:id="nome_evento"></span><br>
+                  Cidade: <span wicket:id="cidade"></span><br>
+                  InÃ­cio: <span wicket:id="data_inicio"></span><br>
+                  Fim: <span wicket:id="data_fim"></span>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-4">
+              <div class="panel panel-info">
+                <div class="panel-heading" style="color:#fff;background-color:#337ab7;border-color:#2e6da4">
+                  <h3 class="panel-title">Afastamento</h3>
+                </div>
+                <div class="panel-body">
+                  Status: <span wicket:id="status"></span><br>
+                  Tipo: <span wicket:id="tipo"></span> Ã”nus: <span wicket:id="onus"></span><br>
+                  InÃ­cio: <span wicket:id="data_inicio_afast"></span><br>
+                  Fim: <span wicket:id="data_fim_afast"></span><br>
+                </div>
+              </div>
+            </div>
+	        </div>
+          <p>
+            <a wicket:id="mudar_status" class="btn btn-primary btn-default">Mudar Status</a>
+            <a wicket:id="deferir_parecer" class="btn btn-primary btn-default">Deferir um Parecer</a>
+            <a wicket:id="relator" class="btn btn-primary btn-default">Cadastrar um Relator</a>
+            <a wicket:id="documento" class="btn btn-primary btn-default">Cadastrar um Documento</a>
+            <a wicket:id="ver_parecer" class="btn btn-primary btn-default">Ver Pareceres</a>
+          </p>
+          <div class="container" wicket:id="containerTable" style="padding-top: 20px;">
+            <div wicket:id="noResult" id="vazio" class="alert alert-info" role="alert">
+              Nenhum documento cadastrado para esse afastamento.
+            </div>
+            <table id="tabela" class="table table-striped ">
+              <thead wicket:id="colunas">
+                <tr>
+                  <th data-align="center">TÃ­tulo</th>
+                  <th data-align="center">Data Juntada</th>
+                </tr>
+              </thead>
+              <tbody id="documentos" wicket:id="documentos">
+                <tr>
+                  <td><span wicket:id="Titulo"></span></td>
+                  <td><span wicket:id="Data_juntada"></span></td>
+                  <td class="text-right">
+                    <div class="btn-group btn-group-sm">
+                      <a href="#" class="btn btn-dark" wicket:id="Download">Download</a>
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <span wicket:id="feedback">Message goes here</span>
+        </div>
+      </div>
+    </wicket:extend>
+  </body>
 
-
-<div class="container">
-
-<div class="row">
-	<div class="col-lg-4">
-				<div class="panel panel-info">
-					  <div class="panel-heading" style="color:#fff;background-color:#337ab7;border-color:#2e6da4">
-					    <h3 class="panel-title">Solicitante</h3>
-					  </div>
-					  <div class="panel-body">
-					    <span wicket:id="nome"></span><br>
-					   	Matrícula: <span wicket:id="matricula"></span><br>
-					    Email: <span wicket:id="email"></span><br>
-					    Tel: <span wicket:id="tel"></span>
-					  </div>
-				 </div>
-	</div>
-	<div class="col-lg-4">
-		<div class="panel panel-info">
-					  <div class="panel-heading" style="color:#fff;background-color:#337ab7;border-color:#2e6da4">
-					    <h3 class="panel-title">Evento</h3>
-					  </div>
-					  <div class="panel-body">
-					    <span wicket:id="nome_evento"></span><br>
-					    Cidade: <span wicket:id="cidade"></span><br>
-					    Início: <span wicket:id="data_inicio"></span><br>
-					    Fim: <span wicket:id="data_fim"></span>
-					  </div>
-		</div>
-	</div>
-	<div class="col-lg-4">
-		<div class="panel panel-info">
-					  <div class="panel-heading" style="color:#fff;background-color:#337ab7;border-color:#2e6da4">
-					    <h3 class="panel-title">Afastamento</h3>
-					  </div>
-					  <div class="panel-body">
-					    Status: <span wicket:id="status"></span><br>
-					    Tipo: <span wicket:id="tipo"></span> Ônus: <span wicket:id="onus"></span><br>
-					    Início: <span wicket:id="data_inicio_afast"></span><br>
-					    Fim: <span wicket:id="data_fim_afast"></span><br>
-					  </div>
-		</div>
-		</div>
-	</div>
-<p>
-<a wicket:id="mudar_status" class="btn btn-primary btn-default">Mudar Status</a>
-<a wicket:id="deferir_parecer" class="btn btn-primary btn-default">Deferir um Parecer</a>
-<a wicket:id="relator" class="btn btn-primary btn-default">Cadastrar um Relator</a>
-<a wicket:id="documento" class="btn btn-primary btn-default">Cadastrar um Documento</a>
-<a wicket:id="ver_parecer" class="btn btn-primary btn-default">Ver Pareceres</a>
-
-</p>
-
-<div class="container" wicket:id="containerTable"
-			style="padding-top: 20px;">
-			<div wicket:id="noResult" id="vazio" class="alert alert-info"
-				role="alert">Nenhum documento cadastrado para esse afastamento.</div>
-			<table id="tabela" class="table table-striped ">
-				<thead wicket:id="colunas">
-					<tr>
-						<th data-align="center">Título</th>
-						<th data-align="center">Data Juntada</th>
-					</tr>
-				</thead>
-				<tbody id="documentos" wicket:id="documentos">
-					<tr>
-						<td><span wicket:id="Titulo"></span></td>
-						<td><span wicket:id="Data_juntada"></span></td>
-						<td class="text-right">
-							<div class="btn-group btn-group-sm">
-								<a href="#" class="btn btn-dark" wicket:id="Download">Download</a>
-							</div>
-						</td>
-					</tr>
-				</tbody>
-			</table>
-		</div>
-
-
-<span wicket:id="feedback">Message goes here</span>
-</div>
-
-
-
-
-
-
-
-</div>
-</wicket:extend>
-</body>
 </html>

@@ -12,7 +12,7 @@ public class VerificaPermissaoController {
 	public boolean verifica_secre(Pessoa pessoa_aux) {
 		
 		if(!(pessoa_aux.getTipoPessoa().equals("2"))) {
-      		notificacao = "Somente secret·rios do departamento tem acesso a esssa tarefa";
+      		notificacao = "Somente secret√°rios do departamento tem acesso a esssa tarefa";
       		return false;
 		}
 		return true;

@@ -1,55 +1,42 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:wicket="http://wicket.apache.org">
-<wicket:head>
-<title>Mostrar Pareceres</title>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet"
-    href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-<script
-    src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<script
-    src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-</wicket:head>
-<body>
 
-<wicket:extend>
+  <wicket:head>
+    <title>Mostrar Pareceres</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  </wicket:head>
 
-       <div style="margin: 40px;">
-
-
-<div class="container" wicket:id="containerTable"
-			style="padding-top: 20px;">
-			<div wicket:id="noResult" id="vazio" class="alert alert-info"
-				role="alert">Nenhum parecer cadastrado para esse afastamento.</div>
-			<table id="tabela" class="table table-striped ">
-				<thead wicket:id="colunas">
-					<tr>
-						<th data-align="center">Nome</th>
-						<th data-align="center">Data</th>
-						<th data-align="center">Julgamento</th>
-						<th data-align="center">Motivo</th>
-					</tr>
-				</thead>
-				<tbody id="pareceres" wicket:id="pareceres">
-					<tr>
-						<td><span wicket:id="Nome"></span></td>
-						<td><span wicket:id="Data"></span></td>
-						<td><span wicket:id="Julgamento"></span></td>
-						<td><span wicket:id="Motivo"></span></td>
-					</tr>
-				</tbody>
-			</table>
-		</div>
-
-
-
-
-
-
-
-</div>
-</wicket:extend>
-
-
-</body>
+  <body>
+    <wicket:extend>
+      <div style="margin: 40px;">
+        <div class="container" wicket:id="containerTable" style="padding-top: 20px;">
+			    <div wicket:id="noResult" id="vazio" class="alert alert-info" role="alert">
+            Nenhum parecer cadastrado para esse afastamento.
+          </div>
+			    <table id="tabela" class="table table-striped ">
+            <thead wicket:id="colunas">
+              <tr>
+                <th data-align="center">Nome</th>
+                <th data-align="center">Data</th>
+                <th data-align="center">Julgamento</th>
+                <th data-align="center">Motivo</th>
+              </tr>
+            </thead>
+            <tbody id="pareceres" wicket:id="pareceres">
+              <tr>
+                <td><span wicket:id="Nome"></span></td>
+                <td><span wicket:id="Data"></span></td>
+                <td><span wicket:id="Julgamento"></span></td>
+                <td><span wicket:id="Motivo"></span></td>
+              </tr>
+            </tbody>
+			    </table>
+		    </div>
+      </div>
+    </wicket:extend>
+  </body>
+  
 </html>

@@ -42,18 +42,18 @@ public class RelatorController {
 		pessoaaux = aplPessoa.buscaMatricula(matricula);
 		
 		if (pessoaaux == null || pessoaaux.getTipoPessoa().equals("2")) {
-			notificacao = "MatrÌcula n„o existe ou o Relator n„o pode ser um secret·rio";
+			notificacao = "Matr√≠cula n√£o existe ou o Relator n√£o pode ser um secret√°rio";
 			return false;
 		}
 		
 		if (aplParentesco.checaParentesco(afastamento.getSolicitante().getMatricula(),
 				pessoaaux.getMatricula())) {
-			notificacao = "Relator n„o pode ser um parente do solicitante do afastamento";
+			notificacao = "Relator n√£o pode ser um parente do solicitante do afastamento";
 			return false;
 		} 
 		
 		if(pessoaaux.getId_pessoa().toString().equals(afastamento.getSolicitante().getId_pessoa().toString())) {
-			notificacao = "Relator n„o pode ser o solicitante do afastamento";
+			notificacao = "Relator n√£o pode ser o solicitante do afastamento";
 			return false;
 		} else {
 			relator.setRelator(pessoaaux);
@@ -70,7 +70,7 @@ public class RelatorController {
 		}
   	
 		if(!afastamento.getSituacaoSolicitacao().getStatusAfastamento().equals("INICIADO")) {
-			notificacao = "O afastamento n„o se encontra no status: INICIADO";
+			notificacao = "O afastamento n√£o se encontra no status: INICIADO";
 			return false;
 		}
 		return true;

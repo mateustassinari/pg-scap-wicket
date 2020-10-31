@@ -98,7 +98,7 @@ public class PessoaLista extends TemplatePage {
 					setResponsePage(ParentescoCadastro.class);
 				} else {
 			        PageParameters params = new PageParameters();
-					String info = "É possivel cadastrar parentesco somente entre professores";
+					String info = "Ã‰ possivel cadastrar parentesco somente entre professores";
 					params.add("mensagem",info);
 					setResponsePage(PessoaLista.class,params);
 				}

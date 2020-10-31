@@ -28,7 +28,6 @@ public class AplRelatorImp implements AplRelator{
 		
 		afastamentoDAO.merge(afastamento);
 		
-		
 		relatorDAO.salvar(relator);
 	}
 

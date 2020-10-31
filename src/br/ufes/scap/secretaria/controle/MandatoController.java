@@ -23,7 +23,7 @@ public class MandatoController {
 	private AplMandato aplMandato;
 	
 	@Inject
-    private AplPessoa aplPessoa;
+	private AplPessoa aplPessoa;
 		
 	public boolean salva(String matricula, String data_iniMandato, String data_fimMandato) throws ParseException {
 		
@@ -31,8 +31,9 @@ public class MandatoController {
 		List<Mandato> mandato = new ArrayList<Mandato>();				
 		pessoa = aplPessoa.buscaMatricula(matricula);
 		mandato = aplMandato.busca();
+		
 		if(pessoa == null) {
-			notificacao = "MatrÌcula n„o existe";							
+			notificacao = "Matr√≠cula n√£o existe";							
 			return false;
 		}
 		
@@ -46,13 +47,13 @@ public class MandatoController {
 			cal2.setTime(formatada.parse(data_fimMandato));
 
 			if(cal.after(cal2)) {
-				notificacao = "Data de inÌcio n„o pode ser superior a Data final";							
+				notificacao = "Data de in√≠cio n√£o pode ser superior a Data final";							
 				return false;
 			}
 
 			if(!(mandato.isEmpty())) {
 				if(cal.before(mandato.get(0).getData_fim()) || cal.equals(mandato.get(0).getData_fim())) {									
-					notificacao = "J· existe um mandato cadastrado";
+					notificacao = "J√° existe um mandato cadastrado";
 					return false;
 				}
 			}
